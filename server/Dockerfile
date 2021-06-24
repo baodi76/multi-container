@@ -5,5 +5,4 @@ COPY ./package.json ./
 RUN npm install
 #RUN npm audit fix --force
 COPY . .
-# dev refer to package.json
-CMD ["npm","run","dev"]
+CMD ["npm","run","start"]
