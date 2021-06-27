@@ -1,0 +1,35 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image" :"baodi76/multi-client",
+            "hostname" :"client",
+            "essential" : false
+        },
+        {
+            "name": "server",
+            "image" :"baodi76/multi-server",
+            "hostname" :"api",
+            "essential" : false
+        },
+        {
+            "name": "worker",
+            "image" :"baodi76/multi-worker",
+            "hostname" :"worker",
+            "essential" : false
+        },
+        {
+            "name": "nginx",
+            "image" :"baodi76/multi-nginx",
+            "essential" : true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 90
+                }
+            ],
+            "links" :["cliient","server"]
+        }
+    ]
+}
